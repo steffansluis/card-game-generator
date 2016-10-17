@@ -24,7 +24,7 @@ const borderStyle = {
   "overflow": "visible"
 };
 
-const Card = React.createClass({
+const PlayingCard = React.createClass({
   propTypes: {
     text: React.PropTypes.string,
     symbol: React.PropTypes.string
@@ -76,7 +76,7 @@ const Card = React.createClass({
 });
 
 // <Ace arrangement="top" />
-module.exports = Card;
+module.exports = PlayingCard;
 // <text
 //    transform="scale(-1.000000,-1.000000)"
 //    id="text3069"
