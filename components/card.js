@@ -51,15 +51,23 @@ const Card = React.createClass({
            style={borderStyle}
         />
 
-        <Element transform="translate(82, 206) scale(1.5)">
+        <Element transform="translate(82, 200)">
+          <Text text={this.props.text} style={{fontSize: "50px"}}/>
+        </Element>
+
+        <Element transform="translate(82, 300) scale(1.5)">
           <Text text={this.props.symbol} style={{fontSize: "100px"}}/>
         </Element>
 
-        <Element transform="translate(668, 794) scale(-1.5)">
+        <Element transform="translate(668, 725) scale(-1.5)">
           <Text text={this.props.symbol} style={{fontSize: "100px"}}/>
         </Element>
 
-        <Element transform="translate(180, 615) scale(5)">
+        <Element transform="translate(668, 825) scale(-1)">
+          <Text text={this.props.text} style={{fontSize: "50px"}}/>
+        </Element>
+
+        <Element transform="translate(250, 600) scale(5)">
           <Text text={this.props.symbol} style={{fontSize: "100px"}}/>
         </Element>
       </g>
