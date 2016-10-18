@@ -38,6 +38,14 @@ const PlayingCard = React.createClass({
   },
 
   render() {
+    const symbolStyle = {
+      fontSize: "120px"
+    };
+
+    const textStyle = {
+      fontSize: "50px"
+    };
+
     return (
       <g>
         <rect
@@ -51,24 +59,24 @@ const PlayingCard = React.createClass({
            style={borderStyle}
         />
 
-        <Element transform="translate(82, 200)">
-          <Text text={this.props.text} style={{fontSize: "50px"}}/>
+        <Element transform="translate(80, 80)">
+          <Text text={this.props.text} style={textStyle}/>
         </Element>
 
-        <Element transform="translate(82, 300) scale(1.5)">
-          <Text text={this.props.symbol} style={{fontSize: "100px"}}/>
+        <Element transform="translate(80, 250) scale(1.5)">
+          <Text text={this.props.symbol} style={symbolStyle}/>
         </Element>
 
-        <Element transform="translate(668, 725) scale(-1.5)">
-          <Text text={this.props.symbol} style={{fontSize: "100px"}}/>
+        <Element transform="translate(600, 850) scale(-1.5)">
+          <Text text={this.props.symbol} style={symbolStyle}/>
         </Element>
 
         <Element transform="translate(668, 825) scale(-1)">
-          <Text text={this.props.text} style={{fontSize: "50px"}}/>
+          <Text text={this.props.text} style={textStyle}/>
         </Element>
 
-        <Element transform="translate(250, 600) scale(5)">
-          <Text text={this.props.symbol} style={{fontSize: "100px"}}/>
+        <Element transform="translate(375, 500) scale(5)">
+          <Text text={this.props.symbol} style={symbolStyle} />
         </Element>
       </g>
     );

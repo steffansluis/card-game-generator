@@ -1,7 +1,11 @@
 const React = require('react');
 
 const textStyle = {
+  textAnchor: "middle"
+};
 
+const tspanStyle = {
+  alignmentBaseline: "middle"
 };
 
 const Text = React.createClass({
@@ -15,7 +19,7 @@ const Text = React.createClass({
       <text
          id="text3065"
          style={{...textStyle, ...this.props.style}}>
-         <tspan id="tspan3067">{this.props.text}</tspan>
+         <tspan style={tspanStyle} id="tspan3067">{this.props.text}</tspan>
       </text>
     );
   }

@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const express = require('express');
+const hotReload = require('./hot-reload');
 
 const SVG = require('./components/svg');
 const PlayingCard = require('./components/playing-card');
@@ -15,20 +16,14 @@ const DEFAULT_COMPONENT = 'playing-card';
 
 server.get('/favicon.ico', (req, res) => res.status(404).end());
 
+server.get('/:component?', hotReload);
 server.get('/:component?', (req, res) => {
   let component = req.params.component || DEFAULT_COMPONENT;
-  let SVGString;
 
   console.log(`Rendering ${component} component with: `, req.query);
 
-  switch (component) {
-    case 'small-talk-concept-card':
-      SVGString = ReactDOMServer.renderToString(<SVG><SmallTalkConceptCard {...req.query} /></SVG>);
-    break;
-    case 'playing-card':
-    default:
-      SVGString = ReactDOMServer.renderToString(<SVG><PlayingCard {...req.query} /></SVG>);
-  }
+  const Component = require(`./components/${component}`);
+  let SVGString = ReactDOMServer.renderToString(<SVG><Component {...req.query} /></SVG>);
 
 
   res.set({
