@@ -6,7 +6,7 @@ const SVG = React.createClass({
   },
 
   render() {
-    return (<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">{this.props.children}</svg>);
+    return (<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 1000">{this.props.children}</svg>);
   }
 });
 

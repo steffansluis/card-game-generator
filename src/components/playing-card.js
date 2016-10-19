@@ -3,75 +3,63 @@ const Ace   = require('./ace');
 const Text   = require('./text');
 const Element = require('./element');
 
-const borderStyle = {
-  "color": "#000000",
-  "fill": "#ffffff",
-  "fillOpacity": "1",
-  "fillRule": "nonzero",
-  "stroke": "#000000",
-  "strokeWidth": "5.0000000",
-  "strokeLinecap": "butt",
-  "strokeLinejoin": "miter",
-  "strokeMiterlimit": "4.0000000",
-  "strokeDashoffset": "0.0000000",
-  "strokeOpacity": "1.0000000",
-  "marker": "none",
-  "markerStart": "none",
-  "markerMid": "none",
-  "markerEnd": "none",
-  "visibility": "visible",
-  "display": "block",
-  "overflow": "visible"
-};
-
 const PlayingCard = React.createClass({
   propTypes: {
     text: React.PropTypes.string,
-    symbol: React.PropTypes.string
+    symbol: React.PropTypes.string,
+    color: React.PropTypes.string
   },
 
   getDefaultProps() {
     return {
       text: "Yo",
-      symbol: "♠︎"
+      symbol: "♠︎",
+      color: "black"
     };
   },
 
   render() {
     const symbolStyle = {
-      fontSize: "120px"
+      fontSize: "130px",
+      fill: this.props.color
     };
 
     const textStyle = {
-      fontSize: "50px"
+      fontSize: "70px",
+      fill: this.props.color
+    };
+
+    const borderStyle = {
+      fill: "#ffffff",
+      stroke: this.props.color,
+      strokeWidth: "5",
     };
 
     return (
       <g>
         <rect
-           rx="17.142857"
-           ry="17.142857"
+           rx="50"
+           ry="50"
            width="740"
            height="990"
            x="5"
            y="5"
-           id="rect1291"
            style={borderStyle}
         />
 
-        <Element transform="translate(80, 80)">
+        <Element transform="translate(100, 80)">
           <Text text={this.props.text} style={textStyle}/>
         </Element>
 
-        <Element transform="translate(80, 250) scale(1.5)">
+        <Element transform="translate(100, 220) scale(1.5)">
           <Text text={this.props.symbol} style={symbolStyle}/>
         </Element>
 
-        <Element transform="translate(600, 850) scale(-1.5)">
+        <Element transform="translate(650, 780) scale(-1.5)">
           <Text text={this.props.symbol} style={symbolStyle}/>
         </Element>
 
-        <Element transform="translate(668, 825) scale(-1)">
+        <Element transform="translate(650, 920) scale(-1)">
           <Text text={this.props.text} style={textStyle}/>
         </Element>
 

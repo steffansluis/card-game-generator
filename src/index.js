@@ -16,7 +16,7 @@ const DEFAULT_COMPONENT = 'playing-card';
 
 server.get('/favicon.ico', (req, res) => res.status(404).end());
 
-server.get('/:component?', hotReload);
+server.get('/:component?', hotReload(true));
 server.get('/:component?', (req, res) => {
   let component = req.params.component || DEFAULT_COMPONENT;
 
