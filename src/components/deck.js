@@ -41,12 +41,12 @@ const PlayingCard = React.createClass({
 
     let n = this.props.cards.length;
     let cols = Math.ceil(Math.sqrt(n));
-    let scale = 1 / cols;
+    let scale = (1000/1200) * 1 / cols;
 
     return (
       <g transform={`scale(${scale})`}>
       {this.props.cards.map((card, i) => {
-        return (<g transform={`translate(${1000 * (i % cols)}, ${1200 * Math.floor(i / (Math.ceil(n / cols) + 1))})`}>
+        return (<g transform={`translate(${1000 * (i % cols)}, ${100 + 1100 * Math.floor(i / (Math.ceil(n / cols) + 1))})`}>
             <Card {...card} />
           </g>);
       })}

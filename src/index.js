@@ -14,25 +14,30 @@ const server = express();
 
 const DEFAULT_COMPONENT = 'playing-card';
 
+const COMPONENT_ROUTES = {
+  'small-talk-concept-card': 'small-talk/concept-card',
+  'small-talk-goal-card': 'small-talk/goal-card',
+}
+
+function mapRouteToComponent(route) {
+  let key = Object.keys(COMPONENT_ROUTES).find((key) => route === key);
+  return key != null ? COMPONENT_ROUTES[key] : null;
+}
+
 server.get('/favicon.ico', (req, res) => res.status(404).end());
 
-server.get('/:component?', hotReload(true));
-server.get('/:component?', (req, res) => {
-  let component = req.params.component || DEFAULT_COMPONENT;
-
+server.get('/:route?', hotReload(true), (req, res) => {
+  let { route } = req.params;
+  let component = mapRouteToComponent(route) || route || DEFAULT_COMPONENT;
   console.log(`Rendering ${component} component with: `, req.query);
 
   const Component = require(`./components/${component}`);
   let SVGString = ReactDOMServer.renderToString(<SVG><Component {...req.query} /></SVG>);
 
-
   res.set({
     'Content-Type': 'image/svg+xml',
     'Content-Disposition': `filename="${component}.svg"`
   });
-
-  console.log(`SVGString: `, SVGString);
-
   res.send(XML_TAG + SVGString);
 });
 
