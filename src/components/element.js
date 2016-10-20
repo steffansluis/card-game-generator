@@ -1,17 +1,30 @@
 const React = require('react');
+const qs = require('qs');
+const componentFor = require('../component-for');
 
 const Element = React.createClass({
   propTypes: {
-    x: React.PropTypes.number,
-    y: React.PropTypes.number,
     transform: React.PropTypes.string,
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    append: React.PropTypes.arrayOf(React.PropTypes.string)
+  },
+
+  getDefaultProps() {
+    return {
+      append: []
+    }
   },
 
   render() {
     return (
-      <g x={this.props.x} y={this.props.y} transform={this.props.transform}>
+      <g transform={this.props.transform}>
         {this.props.children}
+        {this.props.append.map(child => {
+          let [ component, query ] = child.split('?');
+          let params = qs.parse(query);
+          let Component = componentFor(component);
+          return <Component {...params} />
+        })}
       </g>
     );
   }

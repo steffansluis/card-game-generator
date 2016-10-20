@@ -13,6 +13,7 @@ const page = `
         #frame {
           width: 100%;
           height: 100%;
+          border: none;
         }
       </style>
     </head>

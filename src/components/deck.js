@@ -1,13 +1,10 @@
 const React = require('react');
-const Card = require('./playing-card');
+const qs = require('qs');
+const Element = require('./element');
 
-const PlayingCard = React.createClass({
+const Deck = React.createClass({
   propTypes: {
-    cards: React.PropTypes.arrayOf(React.PropTypes.shape({
-      color: React.PropTypes.string,
-      symbol: React.PropTypes.string,
-      text: React.PropTypes.string
-    }))
+    cards: React.PropTypes.arrayOf(React.PropTypes.string)
   },
 
   getDefaultProps() {
@@ -16,43 +13,28 @@ const PlayingCard = React.createClass({
         let text = ['2', '3', '4', '5', '6', '7', '8', '9', '10',' J', 'Q', 'K', 'A'][i%13];
         let symbol = ['♠︎', '♣︎', '♥︎', '♦︎'][Math.floor(i/13)];
         let color = ['black', 'red'][Math.floor(i/26)];
+        let card = { text, symbol, color };
 
-        return { text, symbol, color };
+        return `playing-card?${qs.stringify(card)}`;
+
       })
     }
   },
-
   render() {
-    const symbolStyle = {
-      fontSize: "130px",
-      fill: this.props.color
-    };
-
-    const textStyle = {
-      fontSize: "70px",
-      fill: this.props.color
-    };
-
-    const borderStyle = {
-      fill: "#ffffff",
-      stroke: this.props.color,
-      strokeWidth: "5",
-    };
-
-    let n = this.props.cards.length;
+    let cards = this.props.cards;
+    let n = cards.length;
     let cols = Math.ceil(Math.sqrt(n));
     let scale = (1000/1200) * 1 / cols;
 
     return (
-      <g transform={`scale(${scale})`}>
-      {this.props.cards.map((card, i) => {
-        return (<g transform={`translate(${1000 * (i % cols)}, ${100 + 1100 * Math.floor(i / (Math.ceil(n / cols) + 1))})`}>
-            <Card {...card} />
-          </g>);
+      <Element transform={`scale(${scale})`}>
+      {cards.map((card, i) => {
+        let transform = `translate(${1000 * (i % cols)}, ${100 + 1100 * Math.floor(i / (Math.ceil(n / cols) + 1))})`;
+        return (<Element transform={transform} append={[card]}></Element>);
       })}
-      </g>
+      </Element>
     );
   }
 });
 
-module.exports = PlayingCard;
+module.exports = Deck;
