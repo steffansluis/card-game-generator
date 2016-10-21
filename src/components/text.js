@@ -11,7 +11,8 @@ const tspanStyle = {
 const Text = React.createClass({
   propTypes: {
     text: React.PropTypes.string.isRequired,
-    style: React.PropTypes.object
+    style: React.PropTypes.object,
+    tspanStyle: React.PropTypes.object
   },
 
   render() {
@@ -19,7 +20,7 @@ const Text = React.createClass({
       <text
          id="text3065"
          style={{...textStyle, ...this.props.style}}>
-         <tspan style={tspanStyle} id="tspan3067">{this.props.text}</tspan>
+         <tspan style={{...this.props.tspanStyle, ...tspanStyle}} id="tspan3067">{this.props.text}</tspan>
       </text>
     );
   }
