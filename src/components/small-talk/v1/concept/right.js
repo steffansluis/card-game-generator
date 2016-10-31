@@ -1,7 +1,7 @@
 const React = require('react');
 
-const Text   = require('../../text');
-const Element = require('../../element');
+const Text   = require('../../../text');
+const Element = require('../../../element');
 
 const FONT_SIZE = 32;
 

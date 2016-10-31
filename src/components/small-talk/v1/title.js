@@ -1,10 +1,9 @@
 const React = require('react');
 
-const splitText = require('../../split-text');
+const splitText = require('../../../split-text');
 
-const Ace   = require('../ace');
-const Text   = require('../text');
-const Element = require('../element');
+const Text   = require('../../text');
+const Element = require('../../element');
 
 const FONT_SIZE = 32;
 const MAX_TITLE_LENGTH = 40;

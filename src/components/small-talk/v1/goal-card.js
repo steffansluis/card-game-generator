@@ -1,6 +1,6 @@
 const React = require('react');
 
-const splitText = require('../../split-text');
+const splitText = require('../../../split-text');
 
 const Background = require('./background');
 const Title = require('./title');
@@ -9,8 +9,8 @@ const Type  = require('./type');
 const ConceptLeft = require('./concept/left');
 const ConceptRight = require('./concept/right');
 
-const Text   = require('../text');
-const Element = require('../element');
+const Text   = require('../../text');
+const Element = require('../../element');
 
 const FONT_SIZE = 26;
 const MAX_TEXT_LENGTH = 41;

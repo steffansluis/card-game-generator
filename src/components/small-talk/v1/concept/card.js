@@ -7,8 +7,8 @@ const Type  = require('../type');
 const ConceptLeft = require('./left');
 const ConceptRight = require('./right');
 
-const Text   = require('../../text');
-const Element = require('../../element');
+const Text   = require('../../../text');
+const Element = require('../../../element');
 
 const FONT_SIZE = 32;
 
